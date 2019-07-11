@@ -18,3 +18,16 @@ before_script:
 
 script:
   - inspec exec tests_inspec/ --chef-license=accept-silent
+
+before_deploy:
+- pushd build; zip -r9 demosrv.zip demosrv/ ; popd
+
+deploy:
+  provider: releases
+  on:
+    repo: slavrd/demo-blue-green-vagrant-go
+    tags: true
+  file: build/demosrv.zip
+  skip_cleanup: true
+  api_key:
+    secure: "Uwa89AfU05IKinIsOvixcbCJr7bkVJidtN2hR4khZ5bRrZlnVjzdPVYNjvL+cGn59zdgp8ZF3dXGfcUlK6mvMvIeOZa8KknsO8+efXI8JtJosF4RoSPRV3pAHR6LFRz/0n8AVSS+qGzxg8hrqFS7sSUbGTgt+kS071XBCdCO9n38MvD5DZEil6wjwPwkwzmt8KYO2R8nDDFzL1VU9ZwIpZq1Tq/4iA1DlUnN5w+w5EZdJB8r8s2XbbLF8ZIk6+vDMcV+VIeIXuEx6d5e/8jWsOEsd+Mu3MqNINH/HKG3jLqKGuX7rED2rv1ysn4VSpTHBJPFpDw+DHuQZNoFaJb6J6A6VRHdpucKSVeOYej/bHTgkhEluZbWFnZmrrqqtJe95vtJFKMWxoLfxJRjPANHcxkrlxxyhzuYEeOMnieAkIK5fpnwBHYlBU8POxrOOcbcLrylif4fZJMo9d6G8bpIHci99vQycwasaUJgxVE8P5SfafWQNQFAg/qO/Vew0N57dUnOZ/g4cFvG5ufKrOj8Nvxpb6sHIo6lLP4b5NYFksjd5Nx46antInRvXT2BOy1QISzW0WFvjC6D/RoOGVkEtC+EJnykzZ3ONpQNHr4kItvITCqd2BWnpQzvKvovdzG5kU8xFcjShzBG1r9nDuJ8uMca7bYVyEcdpivwPM420gM="
