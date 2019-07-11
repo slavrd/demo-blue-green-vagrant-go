@@ -1,0 +1,16 @@
+---
+name: default
+title: Demosrv Basic tests
+summary: Test suite for basic check of the demosrv application
+version: 0.1.0
+inputs:
+  - name: DS_IP_ADDR
+    value: "localhost"
+  - name: DS_DEF_PORT
+    value: <%= ENV['DS_DEF_PORT'] %>
+  - name: DS_DEF_MSG
+    value: <%= ENV['DS_DEF_MSG'] %>
+  - name: DS_CUSTOM_PORT
+    value: <%= ENV['DS_CUSTOM_PORT'] %>
+  - name: DS_CUSTOM_MSG
+    value: <%= ENV['DS_CUSTOM_MSG'] %>
