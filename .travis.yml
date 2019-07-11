@@ -1,0 +1,20 @@
+dist: xenial
+sudo: required
+language: Go
+go:
+  - "1.12"
+env:
+  global:
+    - DS_DEF_PORT=8000
+    - DS_DEF_MSG="Blue-Green Deployment Demo"
+    - DS_CUSTOM_PORT=8010
+    - DS_CUSTOM_MSG="My Custom Message"
+
+before_script:
+  - bundle install
+  - go build -o build/demosrv/demosrv ./demosrv/
+  - cp -r ./demosrv/www build/demosrv/www
+  - pushd build/demosrv/; ./demosrv & ./demosrv -p $DS_CUSTOM_PORT -m $DS_CUSTOM_MSG & popd; sleep 5
+
+script:
+  - inspec exec tests_inspec/
