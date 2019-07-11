@@ -14,7 +14,7 @@ before_script:
   - bundle install
   - go build -o build/demosrv/demosrv ./demosrv/
   - cp -r ./demosrv/www build/demosrv/www
-  - pushd build/demosrv/; ./demosrv & ./demosrv -p $DS_CUSTOM_PORT -m $DS_CUSTOM_MSG & popd; sleep 5
+  - pushd build/demosrv/; ./demosrv & ./demosrv -p $DS_CUSTOM_PORT -m "${DS_CUSTOM_MSG}" & popd; sleep 5
 
 script:
   - inspec exec tests_inspec/ --chef-license=accept-silent
