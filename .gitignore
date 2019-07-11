@@ -1,0 +1,4 @@
+.vagrant/
+.ruby-version
+inspec.lock
+build/
