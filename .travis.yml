@@ -17,4 +17,4 @@ before_script:
   - pushd build/demosrv/; ./demosrv & ./demosrv -p $DS_CUSTOM_PORT -m $DS_CUSTOM_MSG & popd; sleep 5
 
 script:
-  - inspec exec tests_inspec/
+  - inspec exec tests_inspec/ --chef-license=accept-silent
