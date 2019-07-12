@@ -1,0 +1,12 @@
+upstream backend  {
+  server localhost:8000;
+}
+
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	location / {
+		proxy_pass  http://backend;
+	}
+}
