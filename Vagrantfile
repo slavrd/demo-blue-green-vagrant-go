@@ -13,10 +13,10 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "ops/scripts/install-golang.sh", args: ["1.12.7", "linux", "amd64"]
   end
 
-  # deploy 2 different application versoin and start them in parallel
-  config.vm.provision "shell", path: "ops/scripts/deploy-apps.sh", run: "always", args: ["v0.1.0", "v0.2.0"]
+  # deploy blue application versoin and start it
+  config.vm.provision "shell", path: "ops/scripts/deploy-apps.sh", run: "always", args: ["v0.1.0", "/opt/blue/", "8000"]
 
-  # direct traffic on nginx to the "blue" application
+  # direct traffic on nginx to the "blue" application (port 8000)
   config.vm.provision "shell", inline: "pushd /vagrant/ops/scripts; ./switch-nginx-traffic.sh blue; popd"
 
 end
