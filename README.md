@@ -22,9 +22,15 @@ The following port forwarding will be configured:
 * host `8010` -> guest `8010`
 * host `8080` -> guest `80`
 
-The `blue (v0.1.0)` and `green (v0.2.0)` versions of the app will be downloaded and started on ports `8000` and `8010` respectively. The nginx server will be configured to listen on port `80` (`8080` on the host) and route traffic to the blue version.
+The `blue (v0.1.0)` version of the app will already be downloaded and started on port `8000`.
 
-The application instances can be reached from the host like:
+You can download and start the `green (v0.2.0)` version on port `8010` by logging to the VM and using the `/vagrant/ops/scripts/deploy-apps.sh` like:
+
+`/vagrant/ops/scripts/deploy-apps.sh v0.2.0 /opt/green/ 8010`
+
+To use the provided nginx configuration you need to bind the application instances to ports `8000` and `8010`.
+
+Then the application instances can be reached from the host like:
 
 * `localhost:8000` - the blue version
 * `localhost:8010` - the green version
