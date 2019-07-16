@@ -1,4 +1,4 @@
-// demosrv starts a basic go http server that serves a simple html page
+// Command demosrv starts a basic go http server that serves a simple html page
 package main
 
 import (
